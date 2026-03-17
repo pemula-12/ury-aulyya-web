@@ -12,9 +12,8 @@
             font-family: 'Amoresa', Amoresa, serif;
             background-color: gold;
             color: #4a4a4a;
-            overflow: auto; 
-            height: 100vh;
-}
+            overflow-y: auto;
+        }
 
 @keyframes slideInRight{
 from{
@@ -649,6 +648,7 @@ transform:scale(1.05);
 <script>
 
 let rainInterval = null;
+let rainImages = [];
 
 /* ===============================
    NAVIGATION SECTION
@@ -688,7 +688,7 @@ Take your time to explore and discover a piece of my world.`,
     }
 
     if(id === "prestation"){
-    rainImages = ["book-removebg-preview.png",];
+    rainImages = ["book-removebg-preview.png"];
     startRain();
 }
 
@@ -812,7 +812,7 @@ const playlist = [
 const music = document.getElementById("myAudio");
 const songDisplay = document.getElementById("songDisplay");
 const musicIcon = document.getElementById("musicIcon");
-const playBtn = document.getElementById("playBtn"); // ✅ FIX (hapus titik)
+const playBtn = document.getElementById("playBtn");
 
 /* LOAD AWAL */
 function loadSong(index){
@@ -838,6 +838,8 @@ function nextSong(){
     currentSongIndex = (currentSongIndex + 1) % playlist.length;
     loadSong(currentSongIndex);
     music.play();
+    musicIcon.classList.replace("fa-music","fa-pause");
+    playBtn.classList.add("rotating");
 }
 
 /* PREV */
@@ -845,6 +847,8 @@ function prevSong(){
     currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
     loadSong(currentSongIndex);
     music.play();
+    musicIcon.classList.replace("fa-music","fa-pause");
+    playBtn.classList.add("rotating");
 }
 
 /* AUTO NEXT 🔥 */
@@ -854,6 +858,7 @@ music.addEventListener("ended", function(){
 
 /* LOAD PERTAMA */
 loadSong(currentSongIndex);
+
 /* ===============================
    TYPEWRITER EFFECT
 =================================*/
@@ -882,7 +887,7 @@ function typeWriter(text,elementId,speed,callback){
 
 
 /* ===============================
-   ENTER WEBSITE
+   ENTER WEBSITE & GO HOME
 =================================*/
 function enterWebsite(){
 
@@ -901,17 +906,14 @@ function enterWebsite(){
     document.getElementById("pertanda").style.display="block";
 
     showSection("home");
-
-    function goHome(e){
-e.preventDefault(); // biar ga reload
-
-alert("Message sent ✨"); // optional
-
-showSection('home'); // balik ke halaman awal
 }
 
+function goHome(e){
+    e.preventDefault();
+    alert("Message sent ✨");
+    showSection('home');
 }
 
 </script>
 </body>
-</html>   
+</html>
