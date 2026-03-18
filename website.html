@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERSONAL WEBSITE - URY AULY'YA FITRI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- GLOBAL STYLE --- */
+        body {
+            margin: 0;
+            font-family: 'Amoresa', Amoresa, serif;
+            background-color: gold;
+            color: #4a4a4a;
+            overflow: auto; 
+            height: 100vh;
+}
+
+@keyframes slideInRight{
+from{
+opacity:0;
+transform:translateX(100px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+        /* --- WELCOME OVERLAY --- */
+        #welcome-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.98); display: flex;
+            justify-content: center; align-items: center; z-index: 10000;
+        }
+
+        .form-container { background: gold; padding: 40px; border-radius: 20px; text-align: center; width: 300px; }
+        .form-container input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #a52a2a; border-radius: 8px; outline: none; box-sizing: border-box; font-family: 'Times New Roman', serif; }
+        .form-container button { background: #a52a2a; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; font-family: 'Times New Roman', serif; }
+
+        /* --- BACKGROUND --- */
+        #bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -2; object-fit: cover; filter: brightness(45%); }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.2); z-index: -1; }
+
+.pop-left{
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.pop-right{
+    animation: slideInRight 1s ease-out forwards;
+}
+ /* --- ANIMASI DARI KIRI --- */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+        /* --- NAVIGATION --- */
+        /* --- NAVIGATION --- */
+.navbar { 
+    background-color: rgba(165, 42, 42, 0.95); 
+    padding: 15px 60px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: 0.5s; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+
+}
+
+/* Container menu */
+.navbar ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 20px;
+    margin: 0; 
+    padding: 0; 
+    align-items: center; 
+}
+
+/* Bubble menu */
+.navbar ul li { 
+    color: white; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold; 
+    padding: 10px 18px;
+    background: rgba(255, 215, 0, 0.25);
+    border-radius: 50px; /* bikin bulat */
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+/* Efek pop up */
+.navbar ul li:hover { 
+    background: gold;
+    color: #a52a2a;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px gold;
+}
+
+/* Efek klik */
+.navbar ul li:active{
+    transform: scale(1.05);
+}
+/* ICON SOSIAL MEDIA */
+.nav-icons{
+    display:flex;
+    gap:12px;
+}
+
+.nav-icons i{
+    color:white;
+    font-size:18px;
+    background: rgba(255,215,0,0.25);
+    padding:10px;
+    border-radius:50%; /* bikin bulat */
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+/* efek bubble */
+.nav-icons i:hover{
+    background:gold;
+    color:#a52a2a;
+    transform:scale(1.3);
+    box-shadow:0 0 15px gold;
+}
+
+/* efek klik */
+.nav-icons i:active{
+    transform:scale(1.1);
+}
+        /* --- CONTENT WRAPPER --- */
+        .content-container { padding: 40px 60px; height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; }
+        .section { display: none; width: 100%; height: 100%; }
+        .active-section { display: flex; align-items: center; justify-content: space-between; }
+
+        /* --- POETRY FLOWER CARDS --- */
+        .flower-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .flower-card { width: 180px; text-align: center; cursor: pointer; transition: 0.4s; position: relative;
+            z-index: 50;
+        } 
+        .flower-img {
+            width: 100%; height: 180px; object-fit: cover;
+            border: 4px solid gold;
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            transition: 0.4s; box-shadow: 0 8px 20px rgba(0,0,0,0.4); 
+        }
+
+        .flower-card:hover .flower-img {
+            transform: scale(1.15) rotate(8deg);border-color:white;border-radius:50%;box-shadow:0 0 25px gold;
+        }
+
+        .flower-card p {
+            color: gold;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+
+        @keyframes flowerBloom{
+            0%{
+                transform:scale(0) rotate(-20deg);
+                opacity:0;
+            }
+            60%{
+                transform:scale(1.1) rotate(5deg);
+            }
+            100%{
+                transform:scale(1) rotate(0);
+                opacity:1;
+            }
+        }
+        .flower-card:nth-child(1){ animation-delay:0.3s; }
+        .flower-card:nth-child(2){ animation-delay:0.7s; }
+        .flower-card:nth-child(3){ animation-delay:1s; }
+
+        /* --- STACK CARD ABOUT ME --- */
+    .stack-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #333;
+    z-index: 50; 
+}
+
+        /* --- POETRY POPUP --- */
+        /* ===============================
+   POPUP OVERLAY
+=================================*/
+#poetry-popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.9);
+    z-index:12000;
+
+    justify-content:center;
+    align-items:center;
+}
+
+/* ===============================
+   POPUP BOX
+=================================*/
+.popup-box{
+    position:relative;
+
+    width:85%;
+    max-width:500px;
+
+    padding:40px;
+    border-radius:20px;
+
+    /* 🌸 background gambar */
+    background:url('poetry.jpeg');
+    background-size:cover;
+    background-position:center;
+
+    border:6px double #a52a2a;
+
+    /* ✨ aesthetic */
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 40px rgba(255,215,0,0.6);
+
+    text-align:center;
+
+    /* 🔥 animasi masuk */
+    animation: popupFade 0.5s ease-out;
+}
+
+/* overlay gelap di dalam box */
+.popup-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+    border-radius:20px;
+
+    z-index:0;
+}
+
+/* semua isi di atas overlay */
+.popup-box *{
+    position:relative;
+    z-index:1;
+}
+
+/* ===============================
+   TEXT STYLE (🔥 FIX WARNA)
+=================================*/
+.popup-box h3{
+    color:gold;
+    font-size:1.8rem;
+    margin-bottom:10px;
+}
+
+.popup-box p{
+    color:white;
+    font-size:1.1rem;
+    line-height:1.6;
+}
+
+/* ===============================
+   CLOSE BUTTON ❌ (🔥 FIX POSISI)
+=================================*/
+.close-popup{
+    position:absolute;
+    top:10px;
+    right:15px;
+
+    font-size:28px;
+    font-weight:bold;
+
+    color:white;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.close-popup:hover{
+    color:gold;
+    transform:scale(1.2) rotate(10deg);
+}
+
+/* ===============================
+   ANIMATION
+=================================*/
+@keyframes popupFade{
+    from{
+        opacity:0;
+        transform:scale(0.7) translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+/* 🔥 animasi dari bawah ke tengah */
+@keyframes riseToCenter{
+    0%{
+        opacity:0;
+        transform:translateY(120px) scale(0.8);
+        filter:blur(10px);
+    }
+    60%{
+        opacity:1;
+        transform:translateY(-10px) scale(1.05);
+        filter:blur(0);
+    }
+    100%{
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* class untuk dipakai */
+.pop-image{
+    opacity:0;
+    animation:riseToCenter 1s ease-out forwards;
+}
+ /* ANIMASI FOTO DARI BAWAH */
+        @keyframes slideInUp{
+            from{
+                opacity:0;
+                transform:translateY(80px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .pop-up{
+            opacity:0;
+            animation:slideInUp 1s ease-out forwards;
+        }
+        /* --- FALLING PHOTOS --- */
+        .falling-photo { position: fixed; top: -120px; width: 80px; height: 80px; object-fit: cover; border-radius: 20px; pointer-events: none; z-index: 30; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(115vh) rotate(360deg); } }
+
+        /* --- FOOTER & MUSIC --- */
+        .music-player {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            z-index: 1000;
+            background: rgba(255, 215, 0, 0.95);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 2px solid white;
+        }
+
+        .song-info {
+            display: block;
+            color: #a52a2a;
+            font-size: 14px;
+            font-weight: bold;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-btn { color: #a52a2a; font-size: 20px; cursor: pointer; }
+        
+        #playBtn {
+            width: 45px; height: 45px;
+            background: #a52a2a;
+            color: gold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center; align-items: center;
+        }
+
+        .rotating { animation: spin 4s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* teks click detail */
+.click-detail{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+padding:5px 12px;
+font-size:12px;
+border-radius:10px;
+opacity:0;
+transition:0.3s;
+}
+
+/* container card jadi relative */
+.flower-card{
+position:relative;
+}
+
+/* muncul saat hover / klik */
+.flower-card:hover .click-detail{
+opacity:1;
+}
+.section{
+    position: relative;
+    z-index: 50;
+}
+.site-pertanda{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background: rgba(0,0,0,0.7);
+    color: gold;
+
+    text-align: center;
+    padding: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    z-index: 9999; /* biar ga ketutup */
+    display: none; /* awalnya disembunyiin */
+}
+
+.burst{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:gold;
+    border-radius:50%;
+    pointer-events:none;
+    animation: burstAnim 0.6s ease-out forwards;
+}
+
+@keyframes burstAnim{
+    to{
+        transform: translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+.contact-container{
+            width:70%;
+            max-width:800px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+        }
+
+        .contact-container input,
+        .contact-container textarea{
+            padding:15px;
+            border-radius:12px;
+            border:2px solid rgba(255,255,255,0.4);
+            background:rgba(255,255,255,0.15);
+            color:white;
+            font-size:16px;
+            outline:none;
+        }
+.contact-container textarea {
+    grid-column: 1/3;
+    height: 100px;
+    resize: none;
+}
+
+.contact-btn {
+    grid-column: 1/3;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: gold;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+}
+
+.bubble-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.bubble {
+    padding: 15px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background: #4B2E2B;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+}
+
+/* glow effect */
+.bubble:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #fff,
+                0 0 30px gold,
+                0 0 45px #ff69b4;
+}
+
+
+/* floating animation */
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.title-right {
+    opacity: 0;
+    animation: slideFromRight 1s ease-out forwards;
+}
+
+@keyframes slideFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bubble {
+    animation: slideFromBottom 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.bubble:nth-child(1) { animation-delay: 0.2s; }
+.bubble:nth-child(2) { animation-delay: 0.4s; }
+.bubble:nth-child(3) { animation-delay: 0.6s; }
+.bubble:nth-child(4) { animation-delay: 0.8s; }
+.bubble:nth-child(5) { animation-delay: 1s; }
+.bubble:nth-child(6) { animation-delay: 1.2s; }
+.bubble:nth-child(7) { animation-delay: 1.4s; }
+
+
+#falling-container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:9999;
+}
+
+.falling-img{
+    position:fixed;
+    object-fit:cover;
+    animation: explodeFall 3s cubic-bezier(0.22,1,0.36,1) forwards;
+    opacity:0;
+}
+
+@keyframes explodeFall{
+    0%{
+        transform: translate(0,0) scale(0.2);
+        opacity:0;
+        filter: blur(6px);
+    }
+    30%{
+        opacity:1;
+        filter: blur(0);
+    }
+    60%{
+        transform: translate(var(--x), -200px) scale(1);
+    }
+    100%{
+        transform: translate(var(--x), 100vh) rotate(540deg);
+        opacity:0;
+    }
+}
+.flower-card:hover .click-detail{
+opacity:1;
+}
+.section{
+    position: relative;
+    z-index: 50;
+}
+.click-detail{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+padding:5px 12px;
+font-size:12px;
+border-radius:10px;
+opacity:0;
+transition:0.3s;
+}
+.site-pertanda{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background: rgba(0,0,0,0.7);
+    color: gold;
+
+    text-align: center;
+    padding: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    z-index: 9999; /* biar ga ketutup */
+    display: none; /* awalnya disembunyiin */
+}
+
+.burst{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:gold;
+    border-radius:50%;
+    pointer-events:none;
+    animation: burstAnim 0.6s ease-out forwards;
+}
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+    </style>
+</head>
+<body>
+
+<div id="welcome-overlay">
+    <div class="form-container">
+        <h2>Welcome to my sanctuary.</h2>
+        <input type="text" id="visitorName" placeholder="Nama Kamu...">
+        <button onclick="enterWebsite()">ENTER PAGE</button>
+    </div>
+</div>
+
+<video autoplay muted loop id="bg-video"><source src="background.mp4" type="video/mp4"></video>
+<div class="overlay"></div>
+<audio id="myAudio"></audio>
+
+<div class="navbar" id="mainNav">
+    <ul>
+        <li onclick="showSection('home')">Home</li>
+        <li onclick="showSection('prestation')">Prestation</li>
+        <li onclick="showSection('aboutme')">About Me</li>
+        <li onclick="showSection('Extrakulikuler')">Extrakulikuler</li>
+        <li onclick="showSection('hobbies')">Hobbies</li>
+        <li onclick="showSection('contact')">Contact</li>
+    </ul>
+    <div class="nav-icons">
+        <i class="fa-brands fa-instagram" onclick="window.open('https://www.instagram.com/hungury._')"></i>
+        <i class="fa-brands fa-whatsapp" onclick="window.open('https://wa.me/6283168892438')"></i>
+        <i class="fa-brands fa-tiktok" onclick="window.open('https://www.tiktok.com/@lastnmt')"></i>
+        <i class="fa-brands fa-spotify" onclick="window.open('https://open.spotify.com/user/ogs1x1wj6afbm7t1cv2aqjzy7?si=zg7eyao6R0-efGwXNRa6Ow')"></i>
+        <i class="fa-brands fa-youtube" onclick="window.open('https://youtube.com/@queenalrena3724?si=1WrbZYGLi7RIp9iB')"></i>
+    </div>
+</div>
+
+<div id="home" class="section active-section">
+        <div id="homeText" style="width: 55%; color: white;">
+            <h1 id="welcomeTitle" style="font-size: 4.5em; color: gold; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); min-height: 1.2em;"></h1>
+            <p id="welcomeSub" style="font-size: 1.6rem; min-height: 1.2em;"></p>
+            <i class="fa-brands fa-instagram" onclick="window.open('https://www.instagram.com/hungury._')"></i>
+        <i class="fa-brands fa-whatsapp" onclick="window.open('https://wa.me/6283168892438')"></i>
+        <i class="fa-brands fa-tiktok" onclick="window.open('https://www.tiktok.com/@lastnmt')"></i>
+        <i class="fa-brands fa-spotify" onclick="window.open('https://www.tiktok.com/@lastnmt?_r=1&_t=ZS-94iEdGdsGos')"></i>
+        <i class="fa-brands fa-youtube" onclick="window.open('https://youtube.com/@queenalrena3724?si=1WrbZYGLi7RIp9iB')"></i>
+        </div>
+        <div id="homePhoto" style="width: 40%;"><img src="uryy.png" class="pop-image" style="width: 100%; border-radius: 20px;"></div>
+    </div>
+
+   <div id="prestation" class="section" style="flex-direction: column; text-align: center; justify-content:flex-start; padding-top:70px;">
+       <h2 class="pop-text" style="color: #C4A484; font-size: 2.5rem; margin-bottom: 5px;">My Prestation when im in shs</h2>
+       <p style="font-weight:bold; color:white;">
+        this is the certificate what i get but not all 
+        my certificate just only a part i add here </p>
+<div class="flower-grid">
+
+<div class="flower-card pop-up" onclick="openPoetry('PERINGAK 1 SEM 1 ','I have been learning English and taking English tests.I achieved 1st place in my class in both the first and second semesters.I also have a language competency certificate.I am still improving my English skills.')">
+<img src="PER1.jpeg" class="flower-img">
+<p>PERINGKAT 1 SEMESTER 2 PARALEEL 6</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('PERINGAK 1 SEM 2','I have been learning English and taking English tests.I achieved 1st place in my class in both the first and second semesters.I also have a language competency certificate.I am still improving my English skills')">
+<img src="PER2.jpeg" class="flower-img">
+<p>PERINGKAT 1 SEMESTER 1 PARALEL 7</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('Taekwondo','I have been learning Taekwondo since elementary school.I continued practicing in grade four.I have received technical certificates in Taekwondo.Taekwondo has helped me improve my discipline and confidence.')">
+<img src="TEK.jpeg" class="flower-img">
+<p>SERTIFIKAT TAEKWONDO</p>
+<span class="click-detail">Click for detail</span>
+</div>
+<div class="flower-card pop-up" onclick="openPoetry('Writer','I live in lampung selatan, Indonesia.My regency is known for its culture and community.')">
+<img src="TULIS.jpeg" class="flower-img">
+<p>KARYA TULIS KABUPATEN</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('NSDC','I have participated in a provincial-level English debate competition.This experience improved my critical thinking, confidence, and public speaking skills.')">
+<img src="debat.jpeg" class="flower-img">
+<p>NSDC PROV</p>
+<span class="click-detail">Click for detail</span>
+</div>
+<div class="flower-card pop-up" onclick="openPoetry('SINGING5','II won 3rd place in a SING competitio ')">
+<img src="SING.jpeg" class="flower-img">
+<p>3RD SINGING</p>
+<span class="click-detail">Click for detail</span>
+</div>
+<div class="flower-card pop-up" onclick="openPoetry('Toefl','I have good English skills, especially in basic communication.I can understand and use English in daily conversations.I am still learning to improve my speaking and writing skills.')">
+<img src="TOELF.jpeg" class="flower-img">
+<p>SERTIFIKAT BERBAHASA INGGRIS</p>
+<span class="click-detail">Click for detail</span>
+</div>
+<div class="flower-card pop-up" onclick="openPoetry('Toefl','I have good English skills, especially in basic communication.I can understand and use English in daily conversations.I am still learning to improve my speaking and writing skills.')">
+<img src="2 TOELF.jpeg" class="flower-img">
+<p>SERTIFIKAT BERBAHASA INGGRIS</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+</div>
+</div>
+   <div id="aboutme" class="section" style="justify-content:center; align-items:center; gap:80px;">
+
+    <!-- TEKS -->
+    <div class="pop-left" style="color:white; max-width:400px;">
+        <h2 style="color:gold; font-size:2.5rem;">About Me</h2>
+        <p style="font-size:1.2rem;"> Hello! I am <b>Ury Auly'ya Fitri</b>, a student from XI.M.2 at SMAN 1 Kalianda. I have a strong interest in art, creativity, and self-expression through visual works, music, and writing. I also enjoy being an active person and participating in different activities. One of my hobbies is baking because I like making cakes and trying new recipes. I also enjoy drawing since it allows me to express my imagination and creativity.
+        </p>
+    </div>
+
+    <!-- FOTO -->
+    <div class="stack-container pop-right" onclick="rotateStack(this)" style="position: relative; width: 220px; height: 300px; cursor: pointer; perspective: 1000px;">
+        <div class="stack-card" style="z-index:3; transform: rotate(-3deg);"><img src="cookie.jpeg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="stack-card" style="z-index:2; transform: rotate(2deg);"><img src="onion.jpeg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="stack-card" style="z-index:1; transform: rotate(5deg);"><img src="anjay.jpeg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="stack-card" style="z-index:1; transform: rotate(5deg);"><img src="fraw.jpeg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+    </div>
+
+</div>
+
+   <div id="Extrakulikuler" class="section" style="flex-direction: column; text-align: center; justify-content:flex-start; padding-top:70px;">
+<h2 class="pop-text" style="color: lightpink; font-size: 2.5rem; margin-bottom: 5px;">My Extrakulikuler</h2>
+
+<div class="flower-grid">
+
+<div class="flower-card pop-up" onclick="openPoetry('English Club','I am one of the members of the English Club in the Newcast division. Being part of this club gives me the opportunity to improve my English skills, especially in speaking, listening, reading, and writing. In the Newcast division, we usually focus on delivering news and information in English, which helps us practice pronunciation, confidence, and public speaking.')">
+<img src="ec.jpeg" class="flower-img">
+<p>English Club</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('OSIS','I am one of the members of the Student Council (OSIS) and I am part of Division 4B. Being a member of the Student Council is a valuable experience for me because it allows me to participate actively in school activities and contribute to the development of the school environment. In Division 4B, I work together with other members to carry out programs and activities that have been planned for the students.')">
+<img src="osis.jpeg" class="flower-img">
+<p>Organisasi Siswa Intra Sekolah</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('Mustrad','I am one of the members of the Traditional Music Club at my school. Being part of this club is a great experience because I can learn and appreciate the rich culture of traditional music. In this club, we practice playing traditional musical instruments and perform traditional songs together.')">
+<img src="mustrad.jpeg" class="flower-img">
+<p>Musik Tradisional</p>
+<span class="click-detail">Click for detail</span>
+</div>
+<div class="flower-card pop-up" onclick="openPoetry('Padus','I am the leader of the school choir. Being the leader is a great responsibility and an important experience for me. In this role, I help guide the members during practice, coordinate activities, and make sure everyone works together well. We practice singing regularly, learn vocal techniques, and prepare songs for school events and performances.')">
+<img src="padus.jpeg" class="flower-img">
+<p>Paduan Suara</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+<div class="flower-card pop-up" onclick="openPoetry('Theater','I am the leader of the school theater club. Being the leader of the theater club is a great responsibility and a valuable experience for me. In this role, I help organize practices, guide the members, and make sure that every activity runs smoothly. We usually practice acting, learn how to express emotions, and prepare performances for school events.')">
+<img src="stc.jpeg" class="flower-img">
+<p>STC (Smansaka Theater)</p>
+<span class="click-detail">Click for detail</span>
+</div>
+
+</div>
+</div>
+    
+    <div id="hobbies" class="section" style="flex-direction:column; align-items:center; justify-content:flex-start; padding-top:50px;">
+    
+    <h2 style="color:white; font-size:3rem; margin-bottom:20px;" class="title-right">My Hobbies</h2>
+    
+    <div class="bubble-container">
+
+        <div class="bubble" onclick="openBubble('baking', this)">Baking some bread & cookie 🎂<span class="click-detail">Click for detail</span> </div>
+        <div class="bubble" onclick="openBubble('drawing', this)">Drawing 🖌️<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('music', this)">Listen to Music 🎧<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('writing', this)">Writing poetry ✍️<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('reading', this)">Reading 📖<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('singing', this)">Singing 🎶<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('guitar', this)">Playing guitar 🎸<span class="click-detail">Click for detail</span></div>
+        <div class="bubble" onclick="openBubble('photo', this)">Photography 📸<span class="click-detail">Click for detail</span></div>
+
+<div id="falling-container"></div>
+    </div>
+</div>
+
+
+</div>
+<div id="contact" class="section" style="flex-direction:column; align-items:center; justify-content:flex-start; padding-top:10px;">
+
+<h2 style="color:white;font-size:3rem;margin-bottom:5px;">Contact Me</h2>
+
+<form onsubmit="goHome(event)" class="contact-container">
+
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email Address" required>
+
+<input type="text" placeholder="Mobile Number">
+<input type="text" placeholder="Email Subject">
+
+<textarea placeholder="Your Message" required></textarea>
+
+<button type="submit" class="contact-btn">Send Message</button>
+
+</form>
+
+</div>
+
+<div id="poetry-popup">
+    <div class="popup-box">
+        <span class="close-popup" onclick="closePoetry()">&times;</span>
+        <h3 id="popTitle"></h3>
+        <p id="popText"></p>
+    </div>
+</div>
+<div id="pertanda" class="site-pertanda">NIS: [0097212069] |URY AULY'YA FITRI| SMAN 1 KALIANDA</div>
+<div class="music-player">
+    <div class="song-info" id="songDisplay">Song Title</div>
+    <i class="fa-solid fa-backward-step music-btn" onclick="prevSong()"></i>
+    <div id="playBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music" id="musicIcon"></i>
+    </div>
+    <i class="fa-solid fa-forward-step music-btn" onclick="nextSong()"></i>
+</div>
+
+<script>
+
+let rainInterval = null;
+
+/* ===============================
+   NAVIGATION SECTION
+=================================*/
+function showSection(id){
+
+    document.querySelectorAll('.section').forEach(section=>{
+        section.classList.remove('active-section');
+    });
+
+    const target = document.getElementById(id);
+    target.classList.add('active-section');
+
+    /* reset animasi */
+    target.querySelectorAll('.pop-image, .pop-text').forEach(el=>{
+        el.style.animation = "none";
+        void el.offsetWidth;
+        el.style.animation = "slideInRight 1s ease-out forwards";
+    });
+
+    /* typing ulang kalau balik ke home */
+    if(id === "home"){
+
+        const name = document.getElementById("visitorName").value;
+
+        document.getElementById("welcomeTitle").innerHTML="";
+        document.getElementById("welcomeSub").innerHTML="";
+
+        typeWriter(`Hello, ${name}!`, "welcomeTitle", 100, function(){
+
+            typeWriter(`Welcome to my personal digital sanctuary.
+A small space where memories, creativity, and stories quietly bloom.
+Take your time to explore and discover a piece of my world.`,
+            "welcomeSub",40);
+
+        });
+    }
+
+    if(id === "prestation"){
+    rainImages = ["book-removebg-preview.png",];
+    startRain();
+}
+
+else if(id === "Extrakulikuler"){
+    rainImages = ["roll-removebg-preview.png","camera_roll-removebg-preview.png"];
+    startRain();
+}
+
+else if(id === "aboutme"){
+    rainImages = ["semagi-removebg-preview.png"];
+    startRain();
+}
+
+else if(id === "hobbies"){
+    rainImages = ["semagi-removebg-preview.png","roll-removebg-preview.png"];
+    startRain();
+}
+
+else{
+    stopRain();
+}
+    
+}
+
+
+
+/* ===============================
+   ABOUT STACK CARD
+=================================*/
+function rotateStack(container){
+
+    const cards = Array.from(container.querySelectorAll(".stack-card"));
+
+    const topCard = cards.reduce((p,c)=>
+        (parseInt(p.style.zIndex) > parseInt(c.style.zIndex)) ? p : c
+    );
+
+    topCard.style.transform="translateY(150%) rotate(15deg)";
+    topCard.style.opacity="0";
+
+    setTimeout(()=>{
+
+        cards.forEach(c=>{
+            if(c!==topCard){
+                c.style.zIndex=(parseInt(c.style.zIndex)+1).toString();
+            }
+        });
+
+        topCard.style.zIndex="1";
+        topCard.style.transform="translateY(-150%) rotate(-15deg)";
+
+        setTimeout(()=>{
+            topCard.style.transform=`rotate(${Math.floor(Math.random()*10)-5}deg) translateY(0)`;
+            topCard.style.opacity="1";
+        },50);
+
+    },300);
+}
+
+
+/* ===============================
+   FALLING PHOTO EFFECT
+=================================*/
+function startRain(){
+    if(!rainInterval){
+        rainInterval=setInterval(spawnPhoto,300);
+    }
+}
+
+function stopRain(){
+    clearInterval(rainInterval);
+    rainInterval=null;
+    document.querySelectorAll(".falling-photo").forEach(i=>i.remove());
+}
+
+function spawnPhoto(){
+
+    const img=document.createElement("img");
+
+    img.src = rainImages[Math.floor(Math.random() * rainImages.length)];
+    img.className="falling-photo";
+
+    img.style.left=Math.random()*95+"vw";
+    img.style.animationDuration=(Math.random()*2+2)+"s";
+
+    document.body.appendChild(img);
+
+    setTimeout(()=>img.remove(),4000);
+}
+
+
+/* ===============================
+   POETRY POPUP
+=================================*/
+function openPoetry(title,text){
+
+    document.getElementById("popTitle").innerText=title;
+    document.getElementById("popText").innerHTML=text;
+
+    document.getElementById("poetry-popup").style.display="flex";
+}
+
+function closePoetry(){
+
+    document.getElementById("poetry-popup").style.display="none";
+
+}
+
+
+/* ===============================
+   MUSIC PLAYER
+=================================*/
+let currentSongIndex = 0;
+
+const playlist = [
+    { title: "La petite fille", src: "lapetite.mp3" },
+    { title: "Howl's Moving Castle", src: "howl.mp3" },
+    { title: "My Way Of Life", src: "myway.mp3" },
+];
+
+const music = document.getElementById("myAudio");
+const songDisplay = document.getElementById("songDisplay");
+const musicIcon = document.getElementById("musicIcon");
+const playBtn = document.getElementById("playBtn"); // ✅ FIX (hapus titik)
+
+/* LOAD AWAL */
+function loadSong(index){
+    music.src = playlist[index].src;
+    songDisplay.innerText = playlist[index].title;
+}
+
+/* PLAY / PAUSE */
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+        musicIcon.classList.replace("fa-music","fa-pause");
+        playBtn.classList.add("rotating");
+    } else {
+        music.pause();
+        musicIcon.classList.replace("fa-pause","fa-music");
+        playBtn.classList.remove("rotating");
+    }
+}
+
+/* NEXT */
+function nextSong(){
+    currentSongIndex = (currentSongIndex + 1) % playlist.length;
+    loadSong(currentSongIndex);
+    music.play();
+}
+
+/* PREV */
+function prevSong(){
+    currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+    loadSong(currentSongIndex);
+    music.play();
+}
+
+/* AUTO NEXT 🔥 */
+music.addEventListener("ended", function(){
+    nextSong();
+});
+
+/* LOAD PERTAMA */
+loadSong(currentSongIndex);
+/* ===============================
+   TYPEWRITER EFFECT
+=================================*/
+function typeWriter(text,elementId,speed,callback){
+
+    let i=0;
+    const element=document.getElementById(elementId);
+
+    element.innerHTML="";
+
+    function typing(){
+
+        if(i<text.length){
+            element.innerHTML+=text.charAt(i);
+            i++;
+            setTimeout(typing,speed);
+        }
+        else if(callback){
+            callback();
+        }
+
+    }
+
+    typing();
+}
+
+
+/* ===============================
+   ENTER WEBSITE
+=================================*/
+function enterWebsite(){
+
+    const name=document.getElementById("visitorName").value;
+
+    if(!name){
+        alert("Isi nama dulu!");
+        return;
+    }
+
+    document.getElementById("welcome-overlay").style.display="none";
+
+    document.getElementById("mainNav").style.opacity="1";
+    document.getElementById("mainNav").style.pointerEvents="auto";
+
+    document.getElementById("pertanda").style.display="block";
+
+    showSection("home");
+}
+
+   function goHome(e){
+    e.preventDefault();
+    alert("Message sent ✨");
+    showSection('home');
+}
+ 
+function openBubble(type, el){
+
+    // 💥 efek bubble meletus
+    el.classList.add("pop");
+    setTimeout(() => el.classList.remove("pop"), 400);
+
+    const container = document.getElementById("falling-container");
+
+    // 🔥 ambil posisi bubble
+    const rect = el.getBoundingClientRect();
+    const startX = rect.left + rect.width / 2;
+    const startY = rect.top + rect.height / 2;
+
+    const data = {
+        baking: ["cookie.jpeg","onion.jpeg"],
+        drawing: ["anjay.jpeg","fraw.jpeg"],
+        music: ["denger.jfif"],
+        writing: ["nulis.jfif"],
+        reading: ["baca.jfif"],
+        singing: ["nay.jfif"],
+        guitar: ["guitra.jfif"],
+        photo: ["poto.jfif"]
+    };
+
+    let images = data[type] || [];
+
+    // ❌ kalau kosong stop
+    if(images.length === 0) return;
+
+    // 🔥 jumlah foto (lebih sedikit biar elegan)
+    for(let i = 0; i < 25; i++) {
+
+        const img = document.createElement("img");
+
+        // 🎲 random gambar
+        const randomImg = images[Math.floor(Math.random() * images.length)];
+        img.src = randomImg;
+
+        img.className = "falling-img";
+
+        // 📍 posisi awal dari bubble
+        img.style.left = startX + "px";
+        img.style.top = startY + "px";
+
+        // 🎲 ukuran random (lebih smooth)
+        let size = 50 + Math.random() * 60;
+        img.style.width = size + "px";
+        img.style.height = size + "px";
+
+        // 💎 bentuk random (bulat / kotak aesthetic)
+        img.style.borderRadius = Math.random() > 0.5 ? "50%" : "20px";
+
+        // ✨ glow effect
+        img.style.boxShadow = "0 0 20px rgba(255,255,255,0.6)";
+
+        // 🔥 arah 360° (INI YANG BIKIN KEREN)
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = 150 + Math.random() * 250;
+
+        const x = Math.cos(angle) * distance;
+
+        img.style.setProperty("--x", x + "px");
+
+        // ⏱ delay biar natural
+        img.style.animationDelay = Math.random() * 0.2 + "s";
+
+        container.appendChild(img);
+
+        // 🧹 hapus setelah animasi
+        setTimeout(() => {
+            img.remove();
+        }, 4000);
+    }
+}
+</script>
+</body>
+</html>   
